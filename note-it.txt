@@ -8,7 +8,6 @@ https://braindose.blog/2020/03/18/4-key-characteristics-of-gitops/
 https://blog.pjjop.org/
 
 # first tools (github)
-
 https://desktop.github.com/
 https://youtu.be/X3bQzBhRMKQ
 https://youtu.be/S0GK7-QHSBc
