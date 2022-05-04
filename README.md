@@ -3,7 +3,7 @@ xOps_Summer 65 notes
 
 URL follow:
 ############################################
->>> Kick-off:
++++ Kick-off:
 ############################################
 
 https://devops.com/the-basics-devsecops-adoption/
