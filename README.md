@@ -6,7 +6,7 @@ URL follow:
 
 ############################################
 
-Kick-off 2May2022:
+Kick-off: (2May2022)
 
 ############################################
 
@@ -23,7 +23,7 @@ https://youtu.be/X3bQzBhRMKQ
 
 ############################################
 
-prepare meeting#1 7May2022
+prepare meeting#1 (Before 7May2022)
 
 ############################################
 
@@ -41,6 +41,6 @@ https://blog.pjjop.org/how-to-set-lemp-stack-with-docker-containers/
 
 ############################################
 
-meeting#1 7May65
+meeting#1 (7May2022)
 
 ############################################
