@@ -3,7 +3,7 @@ xOps_Summer 65 notes
 
 URL follow:
 ############################################
-# Kick-off:
+>>> Kick-off:
 ############################################
 
 https://devops.com/the-basics-devsecops-adoption/
@@ -18,7 +18,7 @@ https://youtu.be/S0GK7-QHSBc
 https://youtu.be/X3bQzBhRMKQ 
 
 ############################################
-# prepare meeting#1
+>>> prepare meeting#1
 ############################################
 
 # tools installed
@@ -34,5 +34,5 @@ https://blog.pjjop.org/how-to-set-lemp-stack-with-docker-containers/
 
 
 ############################################
-# meeting#1 7/5/65
+>>> meeting#1 7/5/65
 ############################################
