@@ -44,3 +44,5 @@ https://blog.pjjop.org/how-to-set-lemp-stack-with-docker-containers/
 meeting#1 (7May2022)
 
 ############################################
+https://www.freecodecamp.org/news/the-docker-handbook/
+https://docs.portainer.io/v/ce-2.11/start/install/server

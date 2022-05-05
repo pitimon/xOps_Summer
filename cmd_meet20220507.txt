@@ -1,0 +1,8 @@
+portainer
+
+linux:
+https://docs.portainer.io/v/ce-2.11/start/install/server/docker/linux
+
+wsl windows:
+https://docs.portainer.io/v/ce-2.11/start/install/server/docker/wsl
+
