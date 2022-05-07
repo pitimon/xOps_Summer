@@ -73,18 +73,26 @@ Portainer
     - OAuth authenticate with github user
     - https://github.com/settings/developers
 
-LAMP
-- https://blog.pjjop.org/how-to-set-lemp-stack-with-docker-containers/
-
-
-Owncloud
-- https://doc.owncloud.com/server/next/admin_manual/installation/docker/
+LAMP Guide
+- https://blog.pjjop.org/how-to-set-lemp-stack-with-docker-containers
 
 Guide to app
 - https://bitnami.com/stacks
 
-prepare meeting#2
-
+prepare meeting#20220514
+- 1st github repository (สรุปคำสั่ง docker)
+- 2nd repository (การติดตั้ง LEMP)
 
 ############################################
-# meeting#2 202205
+# meeting#20220514
+
+- present LEMP deployment from random member
+
+- docker-compose
+- portainer status
+
+Owncloud
+- https://doc.owncloud.com/server/next/admin_manual/installation/docker/
+
+############################################
+# meeting#202205
