@@ -25,7 +25,7 @@ Computer Engineering Dept, Rajamangala University of Technology Thanyaburi.
 
 
 ############################################
-# Kick-off: (2May2022)
+# Kick-off: 20220502
 
 - https://devops.com/the-basics-devsecops-adoption/
 - https://braindose.blog/2020/03/18/4-key-characteristics-of-gitops/
@@ -51,7 +51,7 @@ Computer Engineering Dept, Rajamangala University of Technology Thanyaburi.
 
 
 ############################################
-# meeting#1 (7May2022)
+# meeting#20220507
 
 GitHub case
 - profile setting
@@ -87,4 +87,4 @@ prepare meeting#2
 
 
 ############################################
-# meeting#2 ( May2022)
+# meeting#2 202205
