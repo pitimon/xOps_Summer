@@ -1,3 +1,6 @@
+https://blog.pjjop.org/how-to-set-lemp-stack-with-docker-containers/
+option: mysqladmin service add
+
 # nginx+MariaDB+php /LEMP
 
 docker network create web_network
