@@ -1,7 +1,7 @@
 # xOps_Summer 2022 
 Computer Engineering Dept, Rajamangala University of Technology Thanyaburi.
 
-# Member
+# Members
 - https://github.com/phisic1714
 - https://github.com/nipat01
 - https://github.com/chonlatee11
