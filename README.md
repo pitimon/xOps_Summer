@@ -72,9 +72,8 @@ LAMP
 - https://blog.pjjop.org/how-to-set-lemp-stack-with-docker-containers/
 
 
-
 Owncloud
--https://doc.owncloud.com/server/next/admin_manual/installation/docker/
+- https://doc.owncloud.com/server/next/admin_manual/installation/docker/
 
 
 
