@@ -56,7 +56,9 @@ GitHub case
 - vsCode+github
 - ex:
     - https://github.com/marttp
-
+- Advanced github Build/Test/Deploy
+    - https://docs.github.com/en/actions
+    
 Docker
 - https://www.freecodecamp.org/news/the-docker-handbook/
 - https://www.sharelearn.net/practice/dockerlabs/
