@@ -88,6 +88,7 @@ prepare meeting#20220514
 
 - present LEMP deployment from random member
 
+- portainer OAUTH
 - docker-compose
 - portainer status
 
