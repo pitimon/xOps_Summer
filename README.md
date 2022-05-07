@@ -1,4 +1,25 @@
-# xOps_Summer 2022
+# xOps_Summer 2022 
+Computer Engineering Dept, Rajamangala University of Technology Thanyaburi.
+
+# Member
+- https://github.com/phisic1714
+- https://github.com/nipat01
+- https://github.com/chonlatee11
+- https://github.com/jakkreerat2540
+- https://github.com/duangnapha16
+- https://github.com/K0RV4C
+- https://github.com/keta410
+- https://github.com/patamavadee16
+- https://github.com/Q-Chakorn
+- https://github.com/thanakrit1997
+- https://github.com/kititach
+- https://github.com/Jeraayu
+- https://github.com/Pornpawitt
+- https://github.com/wsTamp1998
+- https://github.com/sasipong-11
+- https://github.com/deachrut
+- https://github.com/weerachaiy
+
 
 ############################################
 # Kick-off: (2May2022)
@@ -42,16 +63,23 @@ Docker
 - https://hub.docker.com/
 - https://www.docker.com/pricing/
 
+Portainer
+- https://docs.portainer.io/v/ce-2.11/start/install/server
+    - OAuth authenticate with github user
+    - https://github.com/settings/developers
 
 LAMP
 - https://blog.pjjop.org/how-to-set-lemp-stack-with-docker-containers/
 
-Portainer
-- https://docs.portainer.io/v/ce-2.11/start/install/server
 
-- prepare meeting#2
+
+Owncloud
+-https://doc.owncloud.com/server/next/admin_manual/installation/docker/
+
+
+
+# prepare meeting#2
 
 
 ############################################
 - meeting#2 ( May2022)
-############################################
