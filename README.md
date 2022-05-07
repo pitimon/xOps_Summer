@@ -58,7 +58,7 @@ GitHub case
     - https://github.com/marttp
 - Advanced github Build/Test/Deploy
     - https://docs.github.com/en/actions
-    
+
 Docker
 - https://www.freecodecamp.org/news/the-docker-handbook/
 - https://www.sharelearn.net/practice/dockerlabs/
@@ -77,7 +77,8 @@ LAMP
 Owncloud
 - https://doc.owncloud.com/server/next/admin_manual/installation/docker/
 
-
+Guide to app
+- https://bitnami.com/stacks
 
 prepare meeting#2
 
