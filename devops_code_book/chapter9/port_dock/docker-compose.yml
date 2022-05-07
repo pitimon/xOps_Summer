@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  portainer:
+    container_name: ${CONTAINER_NAME}
+    restart: unless-stopped
+    image: portainer/portainer
+    volumes:
+      - portainer_data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      VIRTUAL_HOST: ${DOMAINS}
+
+    ports:
+      - "80:9000"
+volumes: 
+  portainer_data:
+
+networks:
+    default:
+       external:
+         name: ${NETWORK}
+         

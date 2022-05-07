@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+  enroll_rpc:
+    container_name: enroll_rpc
+    build: python/
+    restart: always
+    
+    depends_on:
+      - db
+    networks:
+      - microservice
+      - default
+      
+  db:
+    container_name: enroll_mariadb
+    image: mariadb:latest
+    restart: always
+    volumes:
+      - ./mariadb/initdb/:/docker-entrypoint-initdb.d
+      - ./mariadb/data/:/var/lib/mysql/
+    environment:
+      - MYSQL_ROOT_PASSWORD=devops101
+      - MYSQL_DATABASE=devops_db
+      - MYSQL_USER=devops
+      - MYSQL_PASSWORD=devops101
+      
+  pma:
+    container_name: enroll_phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    restart: always
+
+    networks:
+      - webproxy
+      - default
+
+    environment:
+      VIRTUAL_HOST: mydb2.lab20.cpsudevops.com
+      LETSENCRYPT_HOST: mydb2.lab20.cpsudevops.com
+    
+    expose:
+      - "80"
+      
+networks:
+  default:
+    external:
+      name: enroll_network
+  microservice:
+    external:
+      name: microservice_network
+  webproxy:
+    external:
+      name: webproxy
+      

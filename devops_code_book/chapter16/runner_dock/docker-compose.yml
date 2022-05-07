@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+    gitlab-runner1:
+       image: gitlab/gitlab-runner:latest
+       container_name: gitlab-runner1
+       hostname: gitlab-runner1
+       restart: always
+       volumes:
+          - './gitlab-runner1-config:/etc/gitlab-runner:Z'
+          - '/var/run/docker.sock:/var/run/docker.sock'
+networks:
+  default:
+    external:
+      name: gitlab_network
+      

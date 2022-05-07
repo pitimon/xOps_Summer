@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  send_email_otp:
+    container_name: send_email_otp
+    build: python/
+    restart: always
+
+    networks:
+      - microservice
+      - default
+
+  smtp_otp:
+    container_name: smtp_otp
+    image: bytemark/smtp
+    restart: always
+    environment:
+      RELAY_HOST: smtp.live.com
+      RELAY_PORT: 587
+      RELAY_USERNAME: nuttachot@hotmail.com
+      RELAY_PASSWORD: xxx
+
+networks:
+  default:
+    external:
+      name: email_otp_network
+  microservice:
+    external:
+      name: microservice_network
+      

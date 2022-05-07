@@ -1,0 +1,12 @@
+version: "2"
+services:
+  rabbitmq:
+    image: "rabbitmq:management"
+    container_name: rabbitmq
+    restart: always
+      
+networks:
+  default:
+    external:
+      name: microservice_network
+      

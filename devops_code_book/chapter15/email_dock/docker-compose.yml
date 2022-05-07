@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  email_rpc:
+    container_name: email_rpc
+    build: python/
+    restart: always
+
+    networks:
+      - microservice
+      - default
+
+  smtp:
+    container_name: email_smtp
+    image: bytemark/smtp
+    restart: always
+    environment:
+      RELAY_HOST: smtp.live.com
+      RELAY_PORT: 587
+      RELAY_USERNAME: nuttachot@hotmail.com
+      RELAY_PASSWORD: xxx
+
+networks:
+  default:
+    external:
+      name: email_network
+  microservice:
+    external:
+      name: microservice_network
+      

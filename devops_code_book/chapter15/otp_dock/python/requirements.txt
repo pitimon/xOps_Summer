@@ -1,0 +1,3 @@
+redis
+nameko
+validate_email

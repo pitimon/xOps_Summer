@@ -1,0 +1,21 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+<div class="container">
+  <h3>ลงทะเบียนนักศึกษาใหม่</h3>
+  <hr>
+  
+  <form action="" method="post" class="form" role="form">
+    {{ form.csrf_token() }}
+    
+    <div class="form-group">
+      {{ wtf.form_field(form.email, type='email', class='form-control', placeholder='Email Address') }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">ขอ OTP</button>
+    
+  </form>
+  <hr>
+  <p>Devops and Cloud Engineering - CPSU Next</p>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  php:
+    container_name: lemp_php
+    image: php:7.4-fpm-alpine
+    restart: unless-stopped
+    volumes:
+      - ./html/:/var/www/html
+    expose:
+      - "9000"
+
+  nginx:
+    container_name: lemp_nginx
+    image: nginx:stable-alpine
+    restart: unless-stopped
+    volumes:
+      - ./html/:/var/www/html
+
+      - ./nginx/conf/nginx.conf:/etc/nginx/conf/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+
+    ports:
+      - "80:80"
+
+networks:
+  default:
+    external:
+      name:
+        web_network

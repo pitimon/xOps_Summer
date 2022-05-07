@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  send_email_otp:
+    build: python/
+    image: localhost:5000/send_email_otp
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+      replicas: 1
+
+  smtp_otp:
+    image: bytemark/smtp
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+      replicas: 1
+    environment:
+      RELAY_HOST: smtp.live.com
+      RELAY_PORT: 587
+      RELAY_USERNAME: nuttachot@hotmail.com
+      RELAY_PASSWORD: xxx
+
+networks:
+  default:
+    external:
+      name: email_otp_swarm
+      

@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  register_ui:
+    container_name: register_ui
+    build: python/
+    restart: always
+    expose:
+      - "80"
+      
+    environment:
+      VIRTUAL_HOST: www.labxx.cpsudevops.com
+      LETSENCRYPT_HOST: www.labxx.cpsudevops.com
+      
+    networks:
+      - webproxy
+      - default
+
+networks:
+  webproxy:
+    external:
+      name: webproxy
+  default:
+    external:
+      name: microservice_network
+      

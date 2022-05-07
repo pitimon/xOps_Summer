@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  register_ui:
+    build: python/
+    image: localhost:5000/register_ui
+    ports:
+      - "8080:80"
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+      replicas: 2
+
+  session_server:
+    image: bitnami/redis:latest
+    ports:
+      - "6379:6379"
+    environment:
+      ALLOW_EMPTY_PASSWORD: 'yes'
+
+    volumes:
+      - redis_persistence:/bitnami/redis/data
+
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+      replicas: 1
+
+volumes:
+  redis_persistence:
+
+networks:
+  default:
+    external:
+      name: register_ui_swarm
+      

@@ -1,0 +1,62 @@
+image: docker/compose:latest
+variables: 
+   DSSH: "ssh nc-user@lab20.cpsudevops.com"
+   DEPLOY_SERVER: lab20.cpsudevops.com
+
+stages:
+   - build 
+   - test
+   - deploy
+
+build:
+   stage: build
+   only:
+      - master
+   before_script:
+      - echo $REGISTRY_URL
+      - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD $REGISTRY_URL
+
+   script:
+      - docker-compose build
+      - docker-compose push
+
+unit_test1:
+   image: python:3.7.3-alpine3.8
+   stage: test
+   only:
+      - master 
+   script: 
+      - pwd
+      - ls
+      - apk add build-base
+      - pip install -r ./python/requirements.txt
+      - pip install pytest
+      - cd python && pytest tests/unit_tests -v
+
+unit_test2:
+   stage: test
+   only:
+      - master
+   script:
+      - echo 'Hello Unit Test 2'
+deploy:
+   image: gitlab/dind
+   stage: deploy
+   only:
+      - master
+   before_script:
+      - eval "$(ssh-agent -s)"
+      - echo "$SERVER_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+      - mkdir -p ~/.ssh
+      - chmod 700 ~/.ssh
+      - ssh-keyscan -H $DEPLOY_SERVER >> ~/.ssh/known_hosts
+
+      - echo $REGISTRY_URL 
+      - $DSSH sudo docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD $REGISTRY_URL
+
+   script:
+      - $DSSH pwd 
+      - $DSSH ls
+      - $DSSH sudo docker-compose -f ./otp_dock/docker-compose.yml pull
+      - $DSSH git -C ./otp_dock pull https://$GITLAB_USER:$GITLAB_PASSWORD@gitlab.lab20.cpsudevops.com/${CI_PROJECT_PATH}.git master
+      - $DSSH sudo docker stack deploy --compose-file ./otp_dock/docker-compose.yml --with-registry-auth otp_dock  

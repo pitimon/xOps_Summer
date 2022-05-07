@@ -1,0 +1,9 @@
+gunicorn
+requests
+Flask
+Flask-Bootstrap
+Flask-WTF
+WTForms
+redis
+flask_session
+email_validator
