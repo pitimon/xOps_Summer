@@ -97,3 +97,17 @@ Owncloud
 
 ############################################
 # meeting#202205
+
+
+
+
+
+
+
+
+
+
+
+#######################
+# Kubernetes (Temp)
+- https://dev.to/freakynit/kubernetes-handnotes-2bm9

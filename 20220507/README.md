@@ -1,24 +1,17 @@
-https://blog.pjjop.org/how-to-set-lemp-stack-with-docker-containers/
+DockerLab104
+- https://www.sharelearn.net/practice/dockerlabs/dockerlab104/#0
 
-# nginx /Nginx
+nginx
+- https://blog.pjjop.org/how-to-set-lemp-stack-with-docker-containers/
 
-docker network create web_network
-docker network ls
+LEP (no mariadb)
+- https://blog.pjjop.org/how-to-set-lemp-stack-with-docker-containers/
 
-docker-compose up -d
+LEMP
+- https://blog.pjjop.org/how-to-set-lemp-stack-with-docker-containers/
 
-docker-compose down --rmi all
+LEMP v2 (add phpMyadmin: incomplete)
+- ...
 
-# nginx+php /EP
-
-docker-compose up -d
-docker-compose ps
-docker-compose down --rmi all
-
-# nginx+MariaDB+php /LEMP
-docker network create web_network
-docker-compose build
-
-docker-compose up -d  
-docker-compose down
-
+portainer
+- https://docs.portainer.io/v/ce-2.11/start/install/server/docker

@@ -1,0 +1,10 @@
+ClientID:
+Client secret:
+# gent from https://github.com/settings/developers
+Authorization URL: https://github.com/login/oauth/authorize
+Access token URL: https://github.com/login/oauth/access_token
+Resource URL: https://api.github.com/user
+Redirect URL: [your portainer URL]
+Logout URL: https://github.com/logout
+User identifier: login
+Scopes: id email name
