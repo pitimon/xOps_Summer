@@ -1,6 +1,7 @@
 version: '3'
 
 services:
+
   nginx:
     container_name: lemp_nginx
     image: nginx:stable-alpine

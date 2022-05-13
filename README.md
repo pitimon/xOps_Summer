@@ -1,7 +1,7 @@
 # xOps_Summer 2022 
 Computer Engineering Dept, Rajamangala University of Technology Thanyaburi.
 
-# Members
+## Members
 - https://github.com/phisic1714
 - https://github.com/nipat01
 - https://github.com/chonlatee11
@@ -20,6 +20,7 @@ Computer Engineering Dept, Rajamangala University of Technology Thanyaburi.
 - https://github.com/y-surassawadee
 - https://github.com/NuttapongCH
 - https://github.com/PhinyoCh
+- https://github.com/JK369x
 - https://github.com/deachrut
 - https://github.com/weerachaiy
 
@@ -88,16 +89,23 @@ prepare meeting#20220514
 
 - present LEMP deployment from random member
 
-- portainer OAUTH
+- portainer OAUTH (option)
+- docker command
+    - https://devhints.io/docker
+- Dockerfile
+    - https://devhints.io/dockerfile
 - docker-compose
+    - https://devhints.io/docker-compose
+
 - portainer status
 
 Owncloud
 - https://doc.owncloud.com/server/next/admin_manual/installation/docker/
 
 ############################################
-# meeting#202205
+# meeting#20220514
 
+- https://github.com/pitimon/xOps_Summer/tree/master/20220514
 
 
 
@@ -111,3 +119,7 @@ Owncloud
 #######################
 # Kubernetes (Temp)
 - https://dev.to/freakynit/kubernetes-handnotes-2bm9
+- https://dockerlabs.collabnix.com/kubernetes/cheatsheets/kubectl.html
+
+## Best url
+- https://github.com/bregman-arie

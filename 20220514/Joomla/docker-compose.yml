@@ -12,8 +12,8 @@ services:
   joomla:
     image: docker.io/bitnami/joomla:4
     ports:
-      - '80:8080'
-      - '443:8443'
+      - '8009:8080'
+      - '5443:8443'
     environment:
       - JOOMLA_DATABASE_HOST=mariadb
       - JOOMLA_DATABASE_PORT_NUMBER=3306
