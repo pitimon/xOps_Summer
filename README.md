@@ -24,18 +24,10 @@ Computer Engineering Dept, Rajamangala University of Technology Thanyaburi.
 - https://github.com/deachrut
 - https://github.com/weerachaiy
 
-
-############################################
-# Kick-off: 20220502
-- 
-
-############################################
-# meeting#20220507
-- https://github.com/pitimon/xOps_Summer/tree/master/20220507
-
-############################################
-# meeting#20220514
-- https://github.com/pitimon/xOps_Summer/tree/master/20220514
+## Meeting
+- [20220502-kickoff](https://github.com/pitimon/xOps_Summer/tree/master/20220502)
+- [20220507](https://github.com/pitimon/xOps_Summer/tree/master/20220507)
+- [20220514](https://github.com/pitimon/xOps_Summer/tree/master/20220514)
 
 
 
@@ -47,7 +39,7 @@ Computer Engineering Dept, Rajamangala University of Technology Thanyaburi.
 
 
 #######################
-# Kubernetes (Temp)
+## Kubernetes (Temp)
 - https://dev.to/freakynit/kubernetes-handnotes-2bm9
 - https://dockerlabs.collabnix.com/kubernetes/cheatsheets/kubectl.html
 
