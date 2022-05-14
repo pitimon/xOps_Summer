@@ -21,6 +21,7 @@ Computer Engineering Dept, Rajamangala University of Technology Thanyaburi.
 - https://github.com/NuttapongCH
 - https://github.com/PhinyoCh
 - https://github.com/JK369x
+- https://github.com/jameinw
 - https://github.com/deachrut
 - https://github.com/weerachaiy
 
