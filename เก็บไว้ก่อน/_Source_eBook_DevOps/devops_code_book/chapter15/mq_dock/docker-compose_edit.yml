@@ -1,0 +1,16 @@
+version: "3"
+services:
+  rabbitmq:
+    image: "rabbitmq:management"
+    ports:
+      - "5672:5672"
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+      replicas: 1
+networks:
+  default:
+    external:
+      name: rabbitmq_swarm
+      

@@ -1,0 +1,4 @@
+redis
+nameko
+validate_email
+python-dotenv 

@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  register:
+    container_name: otp_gateway
+    build: python/
+    restart: always
+    ports:
+      - "7002:80"  
+networks:
+  default:
+    external:
+      name: microservice_network
+      

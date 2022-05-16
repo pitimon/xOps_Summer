@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  server:
+    build: server/
+    command: python ./server.py
+    
+    networks:
+      - frontend
+    ports:
+      - 80:80
+      
+    volumes:
+      - server_volume:/html
+
+volumes: 
+  server_volume:
+
+networks:
+  frontend:
+    external:
+      name: web_network

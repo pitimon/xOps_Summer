@@ -1,0 +1,40 @@
+services:
+  php:
+    container_name: lemp_php
+    build: php/
+    restart: unless-stopped
+    volumes:
+      - ./html/:/var/www/html
+    expose:
+      - "9000"
+    depends_on:
+      - db
+
+  nginx:
+    container_name: lemp_nginx
+    image: nginx:stable-alpine
+    restart: unless-stopped
+    volumes:
+      - ./html/:/var/www/html
+
+      - ./nginx/conf/nginx.conf:/etc/nginx/conf/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+
+  db:
+    container_name: lemp_mariadb
+    image: mariadb:latest
+    restart: unless-stopped
+    volumes:
+      - ./mariadb/initdb/:/docker-entrypoint-initdb.d
+      - ./mariadb/data/:/var/lib/mysql/
+    environment:
+      - MYSQL_ROOT_PASSWORD=devops101
+      - MYSQL_DATABASE=devops_db
+      - MYSQL_USER=devops
+      - MYSQL_PASSWORD=devops101
+
+networks:
+  default:
+    external:
+      name:
+        web_network

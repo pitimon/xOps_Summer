@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  register_gateway:
+    build: python/
+    image: localhost:5000/register_gateway
+    ports:
+      - "7001:80"
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+      replicas: 1
+      
+networks:
+  default:
+    external:
+      name:  register_gateway_swarm
+      

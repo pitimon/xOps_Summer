@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  otp_gateway:
+    build: python/
+    image: localhost:5000/otp_gateway
+    ports:
+      - "7002:80"
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+      replicas: 1
+      
+networks:
+  default:
+    external:
+      name: otp_gateway_swarm
+      

@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  otp:
+    container_name: otp
+    build: python/
+    restart: always
+    
+    depends_on:
+      - otp_redis 
+      
+    networks:
+      - microservice
+      - default
+      
+  otp_redis:
+    container_name: otp_redis
+    image: "redis:alpine"
+    
+networks:
+  default:
+    external:
+      name: otp_network
+  microservice:
+    external:
+      name: microservice_network
+      

@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  email_rpc:
+    build: python/
+    image: localhost:5000/email_rpc
+    
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+      replicas: 1
+
+  smtp:
+    image: bytemark/smtp
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+      replicas: 1
+    environment:
+      RELAY_HOST: smtp.live.com
+      RELAY_PORT: 587
+      RELAY_USERNAME: nuttachot@hotmail.com
+      RELAY_PASSWORD: xxx
+
+networks:
+  default:
+    external:
+      name: email_swarm
+      

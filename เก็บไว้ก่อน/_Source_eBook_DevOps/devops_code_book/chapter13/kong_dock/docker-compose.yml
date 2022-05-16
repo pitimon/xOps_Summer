@@ -1,0 +1,124 @@
+version: '2'
+
+services:
+  kong:
+    image: kong:2.0.2-alpine
+    container_name: kong
+    depends_on:
+      - kong_db
+      - kong_migration
+      
+    expose:
+      - "8001"
+      - "8444"
+      - "8000"
+      - "8443"
+    restart: always
+    environment:
+      KONG_DATABASE:         postgres
+      KONG_PG_HOST:          kong_db
+      KONG_PG_PORT:          5432
+      KONG_PG_DATABASE:      kong
+      KONG_PROXY_ACCESS_LOG: /dev/stdout
+      KONG_ADMIN_ACCESS_LOG: /dev/stdout
+      KONG_PROXY_ERROR_LOG:  /dev/stderr
+      KONG_ADMIN_ERROR_LOG:  /dev/stderr
+      KONG_PROXY_LISTEN:     0.0.0.0:8000, 0.0.0.0:8443 ssl
+      KONG_ADMIN_LISTEN:     0.0.0.0:8001, 0.0.0.0:8444 ssl
+      KONG_PLUGINS:          basic-auth, key-auth, rate-limiting, prometheus, proxy-cache, oauth2
+
+      VIRTUAL_HOST: service.labxx.cpsudevops.com
+      VIRTUAL_PORT: 8000
+      LETSENCRYPT_HOST: service.labxx.cpsudevops.com
+
+    networks: 
+    - webproxy
+    - default
+    
+  kong_db:
+    image: postgres:9.6
+    container_name: kong_db
+    volumes:
+      - kong_datastore:/var/lib/postgresql/data
+    restart: always
+    environment:
+      POSTGRES_DB: kong
+      POSTGRES_USER: kong
+      POSTGRES_HOST_AUTH_METHOD: trust
+  
+  kong_migration:
+    image: kong:latest
+    container_name: kong_migration
+    command: "kong migrations bootstrap"
+    restart: on-failure
+    environment:
+      KONG_PG_HOST: kong_db
+    depends_on:
+      - kong_db
+      
+  konga:
+    container_name: konga
+    image: pantsel/konga
+    restart: always
+
+    environment:
+      DB_ADAPTER: postgres
+      DB_HOST: konga_db
+      DB_USER: konga 
+      DB_DATABASE: konga
+      NODE_ENV: development
+
+      VIRTUAL_HOST: konga.labxx.cpsudevops.com
+      VIRTUAL_PORT: 1337
+      LETSENCRYPT_HOST: konga.labxx.cpsudevops.com
+
+    expose:
+    - "1337"
+
+    networks: 
+      - webproxy
+      - default
+  
+  konga_db:
+    image: postgres:9.6
+    container_name: konga_db
+    volumes:
+      - konga_database:/var/lib/postgresql/data
+    restart: always
+    environment:
+      POSTGRES_DB: konga
+      POSTGRES_USER: konga
+      POSTGRES_HOST_AUTH_METHOD: trust 
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/promtheus
+    command:
+     - '--config.file=/etc/prometheus/prometheus.yml'
+    expose:
+      - "9090"
+    restart: always
+
+  node_exporter:
+    image: prom/node-exporter:latest
+    container_name: node_exporter
+    expose:
+      - "9100"
+    restart: always
+
+volumes:
+  kong_datastore:
+  konga_database:
+  prometheus_data:
+  
+networks:
+  webproxy:
+    external:
+      name: webproxy
+  default:
+    external:
+      name: kong_network
+      

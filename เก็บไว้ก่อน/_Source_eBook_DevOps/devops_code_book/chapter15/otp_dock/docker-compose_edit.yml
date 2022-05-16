@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  otp:
+    build: python/
+    image: localhost:5000/otp
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+      replicas: 1
+
+    depends_on:
+      - otp_redis
+
+  otp_redis:
+    image: "redis:alpine"
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+      replicas: 1
+
+networks:
+  default:
+    external:
+      name: otp_swarm
+      

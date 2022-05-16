@@ -1,0 +1,13 @@
+version: '3'
+
+services:    
+  session_server:
+    container_name: session_server
+    image: "redis:alpine"
+    restart: always
+    
+networks:
+  default:
+    external:
+      name: microservice_network
+      
