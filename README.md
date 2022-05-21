@@ -43,7 +43,10 @@ Computer Engineering Dept, Rajamangala University of Technology Thanyaburi.
 ## Kubernetes (Temp)
 - https://dev.to/freakynit/kubernetes-handnotes-2bm9
 - https://dockerlabs.collabnix.com/kubernetes/cheatsheets/kubectl.html
+https://youtu.be/X48VuDVv0do
 
 ## Best url
 - https://github.com/bregman-arie
 - https://container.training
+- https://collabnix.com/top-50-docker-interview-questions-for-devops-engineers/
+- https://dillinger.io/
