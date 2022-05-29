@@ -30,17 +30,16 @@ Computer Engineering Dept, Rajamangala University of Technology Thanyaburi.
 - [20220507](https://github.com/pitimon/xOps_Summer/tree/master/20220507)
 - [20220514](https://github.com/pitimon/xOps_Summer/tree/master/20220514)
 - [20220521](https://github.com/pitimon/xOps_Summer/tree/master/20220521)
-
-
-
-
-
+- [20220529](https://github.com/pitimon/xOps_Summer/tree/master/20220529)
 
 
 
 
 
 #######################
+## Docker swarm
+- https://dockerswarm.rocks
+- 
 ## Kubernetes (Temp)
 - https://dev.to/freakynit/kubernetes-handnotes-2bm9
 - https://dockerlabs.collabnix.com/kubernetes/cheatsheets/kubectl.html
