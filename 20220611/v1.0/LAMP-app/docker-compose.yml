@@ -1,0 +1,91 @@
+version: '3.7'
+services:
+  server:
+    image: ghcr.io/bidmcdigitalpsychiatry/lamp-server:2022
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:3000 || exit 1
+    environment:
+      HTTPS: 'off'
+      ROOT_KEY: 'ea9c195dc910c47286f9b5e159110cac91aeca043eb6b355ce33ff37069fd9d7'
+      CDB: 'http://admin:DB_PASSSWORD_lamp101@database:5984/'
+#      PUSH_API_GATEWAY: 'https://app-gateway.lamp.digital/'
+#      PUSH_API_KEY: 'YOUR_PUSH_KEY_HERE'
+#      DASHBOARD_URL: 'dashboard.lamp.digital'
+      REDIS_HOST: 'redis://cache:6379/0'
+      NATS_SERVER: 'message_queue:4222'
+    networks:
+      - default
+      - webproxy
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+    deploy:
+      mode: replicated
+      update_config:
+        order: start-first
+        failure_action: rollback
+      labels:
+        traefik.enable: 'true'
+        traefik.docker.network: 'webproxy'
+        traefik.http.routers.lamp_server.entryPoints: 'websecure'
+        traefik.http.routers.lamp_server.rule: 'Host(`api.me.ipv9.xyz`)'
+        traefik.http.routers.lamp_server.tls.certresolver: 'default'
+        traefik.http.services.lamp_server.loadbalancer.server.port: 3000
+      placement:
+        constraints:
+          - node.role == manager
+  database:
+    image: apache/couchdb:3.1
+    healthcheck:
+      test: curl --fail --silent http://localhost:5984/_up || exit 1
+    environment:
+      COUCHDB_USER: 'admin'
+      COUCHDB_PASSWORD: 'DB_PASSSWORD_lamp101'
+    volumes:
+      - couchdb:/opt/couchdb/data
+    networks:
+      - webproxy
+    deploy:
+      mode: replicated
+      update_config:
+        order: stop-first
+        failure_action: rollback
+      labels:
+        traefik.enable: 'true'
+        traefik.http.routers.lamp_database.entryPoints: 'websecure'
+        traefik.http.routers.lamp_database.rule: 'Host(`db.me.ipv9.xyz`)'
+        traefik.http.routers.lamp_database.tls.certresolver: 'default'
+        traefik.http.services.lamp_database.loadbalancer.server.port: 5984
+      placement:
+        constraints:
+          - node.role == manager
+  cache:
+    image: redis:6.0.8-alpine
+    healthcheck:
+      test: redis-cli ping
+    deploy:
+      mode: replicated
+      update_config:
+        order: stop-first
+        failure_action: rollback
+      placement:
+        constraints:
+          - node.role == manager
+  message_queue:
+    image: nats:2.1.9-alpine3.12
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:8222/varz || exit 1
+    deploy:
+      mode: replicated
+      update_config:
+        order: start-first
+        failure_action: rollback
+      placement:
+        constraints:
+          - node.role == manager
+volumes:
+  couchdb:
+networks:
+  webproxy:
+    external: true

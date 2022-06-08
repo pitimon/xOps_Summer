@@ -1,0 +1,3 @@
+USERNAME=admin
+HASHED_PASSWORD=$apr1$STJDaQqG$ZgexnRnGg2XvKwzvcQpv0/
+DOMAIN=traefik.xops.ipv9.xyz

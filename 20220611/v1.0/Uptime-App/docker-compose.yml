@@ -1,0 +1,33 @@
+version: '3.3'
+
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:latest
+    volumes:
+      - uptime_data:/app/data
+    networks:
+      - webproxy
+    deploy:
+      replicas: 1
+      resources:
+        reservations:
+          cpus: '0.5'
+          memory: 128M
+        limits:
+          cpus: '2.0'
+          memory: 2G
+      labels:
+        - traefik.enable=true
+        - traefik.docker.network=webproxy
+        - traefik.http.routers.${APPNAME}.entrypoints=websecure
+        - traefik.http.routers.${APPNAME}.rule=Host(`${APPNAME}.xops.ipv9.xyz`)
+        - traefik.http.routers.${APPNAME}.tls.certresolver=default
+        - traefik.http.services.${APPNAME}.loadbalancer.server.port=3001
+
+
+volumes:
+  uptime_data:
+networks:
+
+  webproxy:
+    external: true

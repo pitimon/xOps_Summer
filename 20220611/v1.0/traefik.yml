@@ -1,0 +1,77 @@
+version: "3.7"
+services:
+  traefik:
+    image: traefik:latest
+    command:
+      - "--log.level=INFO"
+      - "--accesslog=true"
+      - "--api=true"
+      - "--providers.docker=true"
+      - "--providers.docker.swarmMode=true"
+      - "--providers.docker.exposedByDefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--entrypoints.websecure.http.tls.certResolver=default"
+      - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
+      - "--entrypoints.web.http.redirections.entryPoint.permanent=true"
+      - "--certificatesResolvers.default.acme.email=city@en.rmutt.ac.th"
+      - "--certificatesResolvers.default.acme.storage=/data/acme.json"
+      - "--certificatesResolvers.default.acme.tlsChallenge=true"
+      - "--api"
+      - "--pilot.token=0c3c39c5-a576-490c-b844-51c38adf7688"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "traefik-ssl:/data/"
+    ports:
+      - target: 80
+        protocol: tcp
+        published: 80
+        mode: ingress
+      - target: 443
+        protocol: tcp
+        published: 443
+        mode: ingress
+    networks:
+      - webproxy
+    deploy:
+      mode: replicated
+      placement:
+        constraints:
+          - node.role == manager
+      labels:
+
+        - traefik.enable=true
+        - traefik.docker.network=webproxy
+#        - traefik.constraint-label=webproxy
+        # admin-auth middleware with HTTP Basic auth
+        # Using the environment variables USERNAME and HASHED_PASSWORD
+        - traefik.http.middlewares.admin-auth.basicauth.users=${USERNAME?Variable not set}:${HASHED_PASSWORD?Variable not set}
+        # https-redirect middleware to redirect HTTP to HTTPS
+        # It can be re-used by other stacks in other Docker Compose files
+        - traefik.http.middlewares.https-redirect.redirectscheme.scheme=https
+        - traefik.http.middlewares.https-redirect.redirectscheme.permanent=true
+        # traefik-http set up only to use the middleware to redirect to https
+        # Uses the environment variable DOMAIN
+        - traefik.http.routers.traefik-public-http.rule=Host(`${DOMAIN?Variable not set}`)
+        - traefik.http.routers.traefik-public-http.entrypoints=web
+        - traefik.http.routers.traefik-public-http.middlewares=https-redirect
+        # traefik-https the actual router using HTTPS
+        # Uses the environment variable DOMAIN
+        - traefik.http.routers.traefik-public-https.rule=Host(`${DOMAIN?Variable not set}`)
+        - traefik.http.routers.traefik-public-https.entrypoints=websecure
+        - traefik.http.routers.traefik-public-https.tls=true
+        # Use the special Traefik service api@internal with the web UI/Dashboard
+        - traefik.http.routers.traefik-public-https.service=api@internal
+        # Use the "le" (Let's Encrypt) resolver created below
+        - traefik.http.routers.traefik-public-https.tls.certresolver=default
+        # Enable HTTP Basic auth, using the middleware created above
+        - traefik.http.routers.traefik-public-https.middlewares=admin-auth
+        # Define the port inside of the Docker service to use
+        - traefik.http.services.traefik-public.loadbalancer.server.port=8080
+
+networks:
+  webproxy:
+    external: true
+volumes:
+  traefik-ssl:

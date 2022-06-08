@@ -50,3 +50,9 @@ https://youtu.be/X48VuDVv0do
 - https://container.training
 - https://collabnix.com/top-50-docker-interview-questions-for-devops-engineers/
 - https://dillinger.io/
+- https://www.nginx.com/resources/library/nginx-cookbook-2019-edition
+- https://docker-curriculum.com/
+- https://youtu.be/IO5Sc5UOgbg
+- https://kasmweb.com/workspace_images.html
+- https://skills.github.com
+- 

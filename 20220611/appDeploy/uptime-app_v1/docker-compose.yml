@@ -1,0 +1,36 @@
+version: '3.3'
+
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:latest
+    volumes:
+      - uptime_data:/app/data
+    networks:
+      - traefik-public
+    deploy:
+      replicas: 1
+      resources:
+        reservations:
+          cpus: '0.5'
+          memory: 128M
+        limits:
+          cpus: "2.0"
+          memory: 2G
+      labels:
+        - traefik.enable=true
+        - traefik.docker.network=traefik-public
+        - traefik.constraint-label=traefik-public
+        - traefik.http.routers.uptime101-http.rule=Host(`uptime101.xops.ipv9.xyz`)
+        - traefik.http.routers.uptime101-http.entrypoints=http
+        - traefik.http.routers.uptime101-http.middlewares=https-redirect
+        - traefik.http.routers.uptime101-https.rule=Host(`uptime101.xops.ipv9.xyz`)
+        - traefik.http.routers.uptime101-https.entrypoints=https
+        - traefik.http.routers.uptime101-https.tls=true
+        - traefik.http.routers.uptime101-https.tls.certresolver=le
+        - traefik.http.services.uptime101.loadbalancer.server.port=3001
+
+volumes:
+  uptime_data:
+networks:
+  traefik-public:
+    external: true

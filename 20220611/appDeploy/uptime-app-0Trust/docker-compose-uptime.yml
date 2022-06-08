@@ -1,0 +1,21 @@
+version: '3.3'
+
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:latest
+    volumes:
+      - uptime_data:/app/data
+    deploy:
+      replicas: 1
+      resources:
+        reservations:
+          cpus: '0.2'
+          memory: 128M
+        limits:
+          cpus: "2.0"
+          memory: 2G
+    environment:
+      - UPTIME_KUMA_CLOUDFLARED_TOKEN=${CLOUDFLARED_TOKEN}
+
+volumes:
+  uptime_data:
