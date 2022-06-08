@@ -1,3 +1,7 @@
+# Cluster information
+- expose port:        swarm.ipv9.xyz
+- revProxy Traefik:   [hostname].xops.ipv9.xyz
+
 ## Overview docker swarm
 - https://docs.docker.com/engine/swarm/how-swarm-mode-works/nodes/
 - https://training.play-with-docker.com/
