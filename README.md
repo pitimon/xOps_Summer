@@ -44,6 +44,9 @@ Computer Engineering Dept, Rajamangala University of Technology Thanyaburi.
 - https://dev.to/freakynit/kubernetes-handnotes-2bm9
 - https://dockerlabs.collabnix.com/kubernetes/cheatsheets/kubectl.html
 https://youtu.be/X48VuDVv0do
+- https://medium.com/@maheshd7878/understanding-kubernetes-6545c861ed84
+- https://computingforgeeks.com/how-to-install-minikube-on-ubuntu-debian-linux/
+- 
 
 ## Best url
 - https://github.com/bregman-arie
