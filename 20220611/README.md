@@ -22,7 +22,7 @@
 ### MyExample
 - https://github.com/pitimon/Swarm_Ops
   
-## Hand-on (ขอดูผลงานของสมาชิกทุกคน)
+# Hand-on (ขอดูผลงานของสมาชิกทุกคน before 25 Jun 2022)
 - https://github.com/dockersamples/example-voting-app 
   - แปลงให้เป็น https ผ่าน revProxy 
 - https://docs.lamp.digital/
