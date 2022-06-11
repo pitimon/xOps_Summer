@@ -1,7 +1,7 @@
 # Cluster information
-- expose port:        swarm.ipv9.me
-- revProxy Traefik:   [hostname].xops.ipv9.xyz
-- Cluster management [portainer](https://i7.ipv9.xyz:9443/) Github authen.
+- expose port:        swarm.ipv9.xyz
+- revProxy Traefik:   *.xops.ipv9.xyz
+- Cluster management [portainer](https://portainer.ipv9.me/) Github authen.
 - Cluster monitor [swarmpit](https://swarmpit.xops.ipv9.xyz) Local authen.
 
 ## Overview docker swarm
